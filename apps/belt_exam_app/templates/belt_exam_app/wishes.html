@@ -1,0 +1,75 @@
+{% extends 'belt_exam_app/base.html' %}
+{% load static %}
+
+{% block title%}User Dashboard{% endblock %}
+
+{% block extrastyles %}
+	<link rel="stylesheet" type="text/css" href="{% static 'css/wishes_css/wishes.css' %}" />
+{% endblock %}
+
+{% block dashboard %}
+
+<div id="index_container_top">
+	<p id="index_header" style="font-size:50px">Hello {{ user.first_name }}!</p>
+	<a id="logout" href="/logout">Logout</a>
+	<button id="stats"><a href="/wishes/stats">View Stats</a></button>
+	<button id="wishes"><a href="/jobs/new">Make a Wish!</a></button>
+</div>
+
+<h3>Your wish list:</h3>
+
+<table class="table">
+	<thead class="thead-dark">
+		<th>Item:</th>
+		<th>Date added:</th>
+		<th>Actions:</th>
+	</thead>
+	<tbody>
+		{% for current_wish in this_users_wishes %}
+		<tr>
+			<td>{{current_wish.I_wish_for}}</td>
+			<td>{{current_wish.created_at}}</td>
+			<td><a href="/wishes/remove/{{current_wish.id}}">Remove</a>
+				<a href="/wishes/edit/{{current_wish.id}}">Edit</a>
+				<a href="/wishes/granted/{{current_wish.id}}">Granted!</a>
+			</td>
+		</tr>
+		{% endfor %}
+	</tbody>
+</table>
+
+<table class="table">
+		<thead class="thead-dark">
+			<th>Item</th>
+			<th>Wisher</th>
+			<th>Date added</th>
+			<th>Date updated</th>
+			<th>Likes</th>
+			<th>Actions</th>
+		</thead>
+		<tbody>
+			{% for current_wish in all_wishes_granted %}
+			<tr>
+				<td>{{current_wish.I_wish_for}}</td>
+				<td>{{current_wish.created_by.first_name}}</td>
+				<td>{{current_wish.created_at}}</td>
+				<td>{{current_wish.updated_at}}</td>
+				<td>{{ current_wish.likers.all|length }}</td>
+				{% if uid != current_wish.created_by.id %}
+				<td><a class="d-block" href="/wishes/{{current_wish.id}}/likes">Like</a></td>
+				{% endif %}
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+
+{% endblock %}
+
+
+
+
+
+
+{{ current_wish }}
+
+{{ this_users_wishes }}

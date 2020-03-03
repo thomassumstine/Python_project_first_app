@@ -1,0 +1,29 @@
+{% extends 'belt_exam_app/base.html' %}
+{% load static %}
+
+{% block title%}User Stats{% endblock %}
+
+{% block extrastyles %}
+	<link rel="stylesheet" type="text/css" href="{% static 'css/stats_css/stats.css' %}" />
+{% endblock %}
+
+{% block stats %}
+
+<div id="wish_container_1" style="font-size:50px">Hello {{ user.first_name }}! These are your stats!</div>
+
+<div class="pages_container">
+		<a class="pages" href="/wishes">Home</a>
+	</div>
+	<div id="logout"><a href="/logout">Logout</a>
+	</div>
+	<br>
+
+		<div>
+			<h4>Total wishes granted so far for all users: {{ granted_wishes_all_users|length }}</h4>
+			<p>Your granted wishes: {{ users_granted_wishes|length }}</p>
+			<p>Your pending wishes: {{ users_wishlist|length }}</p>
+		</div>
+
+
+
+{% endblock %}

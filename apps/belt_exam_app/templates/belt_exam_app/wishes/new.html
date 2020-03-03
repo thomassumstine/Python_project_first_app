@@ -1,0 +1,56 @@
+{% extends 'belt_exam_app/base.html' %}
+{% load static %}
+
+{% block title%}New Wish{% endblock %}
+
+{% block extrastyles %}
+	<link rel="stylesheet" type="text/css" href="{% static 'css/new_wish_css/new_wish.css' %}" />
+{% endblock %}
+
+{% block new %}
+
+{% endblock %}
+
+<div id="wish_container_1" style="font-size:50px">Hello {{ user.first_name }}! Make a wish!</div>
+<div class="pages_container">
+    <a class="pages" href="/wishes">Home</a>
+</div>
+<div id="logout"><a href="/logout">Logout</a>
+</div>
+<br>
+			
+<form action="/wishes/create" method="POST">
+	{% csrf_token %}
+	<div class="form-group">
+		<label>I wish for</label>
+		<input class="form-control" name="I wish for">
+	</div>
+
+	<div class="form-group">
+		<label>Description</label>
+		<input class="form-control" name="Description">
+	</div>
+
+	<button class="btn btn-info" types ="submit">Submit</button>
+</form>
+
+
+
+
+
+{% endblock %}
+
+<form action="/wishes/new" method="POST">
+	{% csrf_token %}
+	<div class="form-group">
+		<label>Slogan</label>
+		<input class="form-control" name="slogan">
+	</div>
+
+	<div class="form-group">
+		<label>Price</label>
+		<input class="form-control" type="number" name="price" step="0.01">
+	</div>
+
+	<button class="btn btn-info" types ="submit">Create</button>
+</form>

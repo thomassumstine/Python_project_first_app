@@ -1,0 +1,20 @@
+#index_container_top{
+    width: 1000px;
+}
+
+#index_header{
+    display: inline;
+    text-size-adjust: 30px;
+}
+
+#logout{
+    display: inline;
+}
+
+#stats{
+    display: inline;
+}
+
+#wishes{
+    display: inline;
+}

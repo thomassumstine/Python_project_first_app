@@ -1,0 +1,82 @@
+{% extends 'belt_exam_app/base.html' %}
+{% load static %}
+
+{% block title%}Login and Register{% endblock %}
+
+{% block extrastyles %}
+	<link rel="stylesheet" type="text/css" href="{% static 'css/index_css/index.css' %}" />
+{% endblock %}
+
+{% block index %}
+
+<div id="index_header"><h1>Welcome! Sign in to make a wish!</h1></div>
+
+<div class="row">
+	<div class="col-sm-6">
+		{% block register %}
+			<div class="card shadow w-75 mt-5 ml-5 ">
+				<div class="card-header">
+					<h3 class="text-center">Register</h3>
+				</div>
+				<div class="card-body">
+					<form action="/register" method="POST">
+						{% csrf_token %}
+	
+						<div class="form-group">
+							<label>First Name</label>
+							<input class="form-control" name="first_name">
+						</div>
+	
+						<div class="form-group">
+							<label>Last Name</label>
+							<input class="form-control" name="last_name">
+						</div>
+	
+						<div class="form-group">
+							<label>Email</label>
+							<input class="form-control" name="email">
+						</div>
+	
+						<div class="form-group">
+							<label>Password</label>
+							<input class="form-control" type="password" values="asdfasdf" name="password">
+						</div>
+	
+						<div class="form-group">
+						<label>Confirm Password</label>
+							<input class="form-control" type="password" values="asdfasdf" name="password_confirm">
+						</div>
+	
+						<button class="btn btn-info" type="submit">Register</button>
+					</form>
+				</div>
+			</div>
+		{% endblock %}
+	</div>
+    <div class="col-sm-6">
+		{% block login %}
+			<div class="card shadow w-75 mt-5 mr-5">
+				<div class="card-header">
+					<h3 class="text-center">Login</3>
+				</div>
+				<div class="card-body">
+					<form action="/login" method="POST">
+						{% csrf_token %}
+						<div class="form-group">
+							<label>Email</label>
+							<input class="form-control" name="email">
+						</div>
+
+						<div class="form-group">
+							<label>Password</label>
+							<input class="form-control" type="password" value="asdfasdf" name="password">
+						</div>
+
+						<button class="btn btn-info" types ="submit">Login</button>
+					</form>
+				</div>
+			</div>
+		{% endblock %}
+	</div>
+</div>
+{% endblock %}

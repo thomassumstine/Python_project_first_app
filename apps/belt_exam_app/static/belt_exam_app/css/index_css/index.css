@@ -1,0 +1,23 @@
+.index_container{
+    /*border: 1px solid black;*/
+    /*width: 400 px;*/
+}
+
+.index_register_container{
+    display: inline-block;
+    /*border: 1px solid black;*/
+    /*width: 400 px;*/
+}
+
+.index_login_container{
+    display: inline-block;
+    /*border: 1px solid black;*/
+    /*width: 400 px;*/
+}
+
+#index_header{
+    padding: 5px;
+    position: relative;
+    top: 10px;
+    left: 10px;
+}
